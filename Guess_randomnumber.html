@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <!-- BULMA CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!-- PYSCRIPT -->
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <py-env></py-env>
+    <style>
+	.section{
+	      width: 600px;
+		  height: 500px;
+		  position: fixed;
+		  top: 30%;
+		  left: 45%;
+		  margin-top: -100px;
+    	  margin-left: -200px;
+		  background:
+		      radial-gradient(blue 1px, transparent 2px),
+		      radial-gradient(blue 1px, transparent 2px),
+		      linear-gradient(#fff 3px, transparent 0),
+		      linear-gradient(45deg, transparent 74px, transparent 75px, #a4a4a4 75px, #a4a4a4 76px, transparent 77px, transparent 109px),
+		      linear-gradient(-45deg, transparent 75px, transparent 76px, #a4a4a4 76px, #a4a4a4 77px, transparent 78px, transparent 109px),
+		      #fff;
+		      background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+   			  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+   		font-size:16pt;
+
+	}
+
+	h4 {
+		text-align: center;
+		font-size:20pt;
+
+   }
+
+
+	</style>
+
+  </head>
+  <body>
+
+   <body>
+     <div id="div1" class="container">
+			<h4><strong>Welcome to guessing game. Good luck!</strong></h4>
+			<br>
+		<div class="section">
+			<input class="input is-info" type="number" id="test-input" placeholder="Guess a number between 1 and 10"></input>
+			<br>
+			<br>
+			<button class="button is-primary" id="submit-button" type="submit" pys-onClick="my_function">OK</button>
+			<div id="test-output"></div>
+		</div>
+	</div>
+   <py-script>
+import random
+def my_function(*args, **kwargs):
+	comchoice = random.randint(1,10)
+	text = int(Element('test-input').element.value)
+	if comchoice == text:
+		Element('test-output').element.innerText = text
+		Element("test-output").element.innerHTML = "You win!"
+	elif comchoice > text:
+		Element("test-output").element.innerHTML = "Too low.Try again!"
+	else:
+		Element("test-output").element.innerHTML = "Too high.Try again!"
+   </py-script>
+
+     </body>
+</html>
