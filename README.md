@@ -1,2 +1,2 @@
 # python_app
-Guess a number game
+Guess a number game with pyscript
